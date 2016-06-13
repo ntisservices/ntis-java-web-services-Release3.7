@@ -1,0 +1,88 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soapenv:Header />
+	<soapenv:Body>
+		<d2lm:d2LogicalModel xmlns:d2lm="http://datex2.eu/schema/2/2_0"
+			modelBaseVersion="2" extensionName="NTIS Published Services"
+			extensionVersion="2.0">
+			<d2lm:exchange>
+				<d2lm:supplierIdentification>
+					<d2lm:country>gb</d2lm:country>
+					<d2lm:nationalIdentifier>NTIS</d2lm:nationalIdentifier>
+				</d2lm:supplierIdentification>
+			</d2lm:exchange>
+			<d2lm:payloadPublication xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="d2lm:ElaboratedDataPublication" lang="en">
+				<d2lm:feedType>Fused Sensor-only PTD</d2lm:feedType>
+				<d2lm:publicationTime>2014-08-04T14:14:15.000+01:00</d2lm:publicationTime>
+				<d2lm:publicationCreator>
+					<d2lm:country>gb</d2lm:country>
+					<d2lm:nationalIdentifier>NTIS</d2lm:nationalIdentifier>
+				</d2lm:publicationCreator>
+				<d2lm:timeDefault>2014-08-04T14:14:14.014+01:00</d2lm:timeDefault>
+				<d2lm:headerInformation>
+					<d2lm:areaOfInterest>national</d2lm:areaOfInterest>
+					<d2lm:confidentiality>restrictedToAuthoritiesTrafficOperatorsAndPublishers</d2lm:confidentiality>
+					<d2lm:informationStatus>real</d2lm:informationStatus>
+				</d2lm:headerInformation>
+				<d2lm:elaboratedData>
+					<d2lm:basicData xsi:type="d2lm:TrafficFlow">
+						<d2lm:pertinentLocation xsi:type="d2lm:LocationByReference">
+							<d2lm:predefinedLocationReference targetClass="PredefinedLocation" id="141414" version="1.1" />
+						</d2lm:pertinentLocation>
+						<d2lm:vehicleFlow>
+							<d2lm:vehicleFlowRate>99</d2lm:vehicleFlowRate>
+						</d2lm:vehicleFlow>
+					</d2lm:basicData>
+				</d2lm:elaboratedData>
+				<d2lm:elaboratedData>
+					<d2lm:basicData xsi:type="d2lm:TrafficConcentration">
+						<d2lm:pertinentLocation xsi:type="d2lm:LocationByReference">
+							<d2lm:predefinedLocationReference targetClass="PredefinedLocation" id="141414" version="1.1" />
+						</d2lm:pertinentLocation>
+						<d2lm:occupancy>
+							<d2lm:percentage>75</d2lm:percentage>
+						</d2lm:occupancy>
+					</d2lm:basicData>
+				</d2lm:elaboratedData>
+				<d2lm:elaboratedData>
+					<d2lm:basicData xsi:type="d2lm:TrafficHeadway">
+						<d2lm:pertinentLocation xsi:type="d2lm:LocationByReference">
+							<d2lm:predefinedLocationReference targetClass="PredefinedLocation" id="141414" version="1.1" />
+						</d2lm:pertinentLocation>
+						<d2lm:averageTimeHeadway>
+							<d2lm:duration>30</d2lm:duration>
+						</d2lm:averageTimeHeadway>
+					</d2lm:basicData>
+				</d2lm:elaboratedData>
+				<d2lm:elaboratedData>
+					<d2lm:basicData xsi:type="d2lm:TrafficSpeed">
+						<d2lm:pertinentLocation xsi:type="d2lm:LocationByReference">
+							<d2lm:predefinedLocationReference targetClass="PredefinedLocation" id="141414" version="1.1" />
+						</d2lm:pertinentLocation>
+						<d2lm:averageVehicleSpeed>
+							<d2lm:speed>66</d2lm:speed>
+						</d2lm:averageVehicleSpeed>
+					</d2lm:basicData>
+				</d2lm:elaboratedData>
+				<d2lm:elaboratedData>
+					<d2lm:basicData xsi:type="d2lm:TravelTimeData">
+						<d2lm:pertinentLocation xsi:type="d2lm:LocationByReference">
+							<d2lm:predefinedLocationReference targetClass="PredefinedLocation" id="141414" version="1.1" />
+						</d2lm:pertinentLocation>
+						<d2lm:travelTime>
+							<d2lm:duration>111</d2lm:duration>
+						</d2lm:travelTime>
+						<d2lm:freeFlowTravelTime>
+							<d2lm:duration>112</d2lm:duration>
+						</d2lm:freeFlowTravelTime>
+						<d2lm:normallyExpectedTravelTime>
+							<d2lm:duration>110</d2lm:duration>
+						</d2lm:normallyExpectedTravelTime>
+					</d2lm:basicData>
+				</d2lm:elaboratedData>
+				<!-- x N – The sequence of <d2lm:elaboratedData> items, above, are for 
+					a single location (Network Link). The message can contain the same sequence 
+					of data items for multiple locations -->
+			</d2lm:payloadPublication>
+		</d2lm:d2LogicalModel>
+	</soapenv:Body>
+</soapenv:Envelope>

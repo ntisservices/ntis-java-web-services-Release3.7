@@ -1,0 +1,78 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soapenv:Header />
+	<soapenv:Body>
+		<d2lm:d2LogicalModel xmlns:d2lm="http://datex2.eu/schema/2/2_0"
+			modelBaseVersion="2" extensionName="NTIS Published Services"
+			extensionVersion="2.0">
+			<d2lm:exchange>
+				<d2lm:supplierIdentification>
+					<d2lm:country>gb</d2lm:country>
+					<d2lm:nationalIdentifier>NTIS</d2lm:nationalIdentifier>
+				</d2lm:supplierIdentification>
+			</d2lm:exchange>
+			<d2lm:payloadPublication xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:type="d2lm:MeasuredDataPublication" lang="en">
+				<d2lm:feedType>ANPR Journey Time Data</d2lm:feedType>
+				<d2lm:publicationTime>2014-08-04T14:14:14.014+01:00</d2lm:publicationTime>
+				<d2lm:publicationCreator>
+					<d2lm:country>gb</d2lm:country>
+					<d2lm:nationalIdentifier>NTIS</d2lm:nationalIdentifier>
+				</d2lm:publicationCreator>
+				<d2lm:measurementSiteTableReference
+					targetClass="MeasurementSiteTable" version="1.1"
+					id="NTIS_ANPR_Measurement_Sites" />
+				<d2lm:headerInformation>
+					<d2lm:confidentiality>restrictedToAuthoritiesTrafficOperatorsAndPublishers</d2lm:confidentiality>
+					<d2lm:informationStatus>real</d2lm:informationStatus>
+					<d2lm:urgency>normalUrgency</d2lm:urgency>
+				</d2lm:headerInformation>
+				<d2lm:siteMeasurements>
+					<d2lm:measurementSiteReference
+						version="1.1" targetClass="MeasurementSiteRecord" id="141414141414" />
+					<d2lm:measurementTimeDefault>2014-08-04T14:14:14.014+01:00</d2lm:measurementTimeDefault>
+					<d2lm:measuredValue index="0">
+						<!-- Note: index always '0' – there is only a single measurement type 
+							at each site -->
+						<d2lm:measuredValue>
+							<d2lm:basicData xsi:type="d2lm:TravelTimeData">
+								<d2lm:travelTime>
+									<d2lm:dataError>true</d2lm:dataError>
+									<d2lm:reasonForDataError>
+										<d2lm:values>
+											<d2lm:value>suspect equipment</d2lm:value>
+										</d2lm:values>
+									</d2lm:reasonForDataError>
+									<d2lm:duration>1414</d2lm:duration>
+								</d2lm:travelTime>
+							</d2lm:basicData>
+						</d2lm:measuredValue>
+					</d2lm:measuredValue>
+				</d2lm:siteMeasurements>
+				<d2lm:siteMeasurements>
+					<d2lm:measurementSiteReference
+						version="1.1" targetClass="MeasurementSiteRecord" id="414141414141" />
+					<d2lm:measurementTimeDefault>2014-08-04T14:14:14.014+01:00</d2lm:measurementTimeDefault>
+					<d2lm:measuredValue index="0">
+						<!-- Note: index always '0' – there is only a single measurement type 
+							at each site -->
+						<d2lm:measuredValue>
+							<d2lm:basicData xsi:type="d2lm:TravelTimeData">
+								<d2lm:travelTime>
+									<d2lm:dataError>true</d2lm:dataError>
+									<d2lm:reasonForDataError>
+										<d2lm:values>
+											<d2lm:value>suspect equipment</d2lm:value>
+										</d2lm:values>
+									</d2lm:reasonForDataError>
+									<d2lm:duration>4141</d2lm:duration>
+								</d2lm:travelTime>
+							</d2lm:basicData>
+						</d2lm:measuredValue>
+					</d2lm:measuredValue>
+				</d2lm:siteMeasurements>
+				<!-- x N - Multiple <d2lm:siteMeasurements> elements can exist in the 
+					same message -->
+			</d2lm:payloadPublication>
+		</d2lm:d2LogicalModel>
+	</soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,100 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soapenv:Header />
+	<soapenv:Body>
+		<d2lm:d2LogicalModel xmlns:d2lm="http://datex2.eu/schema/2/2_0"
+			modelBaseVersion="2" extensionName="NTIS Published Services"
+			extensionVersion="2.0">
+			<d2lm:exchange>
+				<d2lm:supplierIdentification>
+					<d2lm:country>gb</d2lm:country>
+					<d2lm:nationalIdentifier>NTIS</d2lm:nationalIdentifier>
+				</d2lm:supplierIdentification>
+			</d2lm:exchange>
+			<d2lm:payloadPublication xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:type="d2lm:ElaboratedDataPublication" lang="en">
+				<d2lm:feedType>Fused FVD and Sensor PTD</d2lm:feedType>
+				<d2lm:publicationTime>2014-08-04T14:14:15.000+01:00</d2lm:publicationTime>
+				<d2lm:publicationCreator>
+					<d2lm:country>gb</d2lm:country>
+					<d2lm:nationalIdentifier>NTIS</d2lm:nationalIdentifier>
+				</d2lm:publicationCreator>
+				<d2lm:forecastDefault>false</d2lm:forecastDefault>
+				<!-- Data is for current, rather than predicted, time unless otherwise 
+					specified. -->
+				<d2lm:timeDefault>2014-08-04T14:14:14.014+01:00</d2lm:timeDefault>
+				<d2lm:headerInformation>
+					<d2lm:areaOfInterest>national</d2lm:areaOfInterest>
+					<d2lm:confidentiality>restrictedToAuthoritiesTrafficOperatorsAndPublishers</d2lm:confidentiality>
+					<d2lm:informationStatus>real</d2lm:informationStatus>
+				</d2lm:headerInformation>
+				<!-- Current Speed Data -->
+				<d2lm:elaboratedData>
+					<d2lm:basicData xsi:type="d2lm:TrafficSpeed">
+						<d2lm:pertinentLocation xsi:type="d2lm:LocationByReference">
+							<d2lm:predefinedLocationReference targetClass="PredefinedLocation" id="414141" version="1.1" />
+						</d2lm:pertinentLocation>
+						<d2lm:averageVehicleSpeed>
+							<d2lm:speed>55</d2lm:speed>
+						</d2lm:averageVehicleSpeed>
+						<d2lm:trafficSpeedExtension>
+							<d2lm:speedFvdOnly>
+								<d2lm:speed>57</d2lm:speed>
+							</d2lm:speedFvdOnly>
+						</d2lm:trafficSpeedExtension>
+					</d2lm:basicData>
+				</d2lm:elaboratedData>
+				<!-- Current Travel Time Data -->
+				<d2lm:elaboratedData>
+					<d2lm:basicData xsi:type="d2lm:TravelTimeData">
+						<d2lm:pertinentLocation xsi:type="d2lm:LocationByReference">
+							<d2lm:predefinedLocationReference
+								targetClass="PredefinedLocation" id="414141" version="1.1" />
+						</d2lm:pertinentLocation>
+						<d2lm:travelTime>
+							<d2lm:duration>100</d2lm:duration>
+						</d2lm:travelTime>
+						<d2lm:freeFlowTravelTime>
+							<d2lm:duration>90</d2lm:duration>
+						</d2lm:freeFlowTravelTime>
+						<d2lm:normallyExpectedTravelTime>
+							<d2lm:duration>95</d2lm:duration>
+						</d2lm:normallyExpectedTravelTime>
+					</d2lm:basicData>
+				</d2lm:elaboratedData>
+				<!-- Speed Predictions -->
+				<d2lm:elaboratedData>
+					<d2lm:forecast>true</d2lm:forecast>
+					<d2lm:basicData xsi:type="d2lm:TrafficSpeed">
+						<d2lm:measurementOrCalculationTime>2014-08-04T14:29:14.014+01:00</d2lm:measurementOrCalculationTime>
+						<d2lm:pertinentLocation xsi:type="d2lm:LocationByReference">
+							<d2lm:predefinedLocationReference targetClass="PredefinedLocation" id="414141" version="1.1" />
+						</d2lm:pertinentLocation>
+						<d2lm:averageVehicleSpeed>
+							<d2lm:speed>66</d2lm:speed>
+						</d2lm:averageVehicleSpeed>
+					</d2lm:basicData>
+				</d2lm:elaboratedData>
+				<!-- x 8 – Speed predictions are specified for the next 2hrs at 15min 
+					intervals -->
+				<!-- Travel Time Predictions -->
+				<d2lm:elaboratedData>
+					<d2lm:forecast>true</d2lm:forecast>
+					<d2lm:basicData xsi:type="d2lm:TravelTimeData">
+						<d2lm:measurementOrCalculationTime>2014-08-04T14:29:14.014+01:00</d2lm:measurementOrCalculationTime>
+						<d2lm:pertinentLocation xsi:type="d2lm:LocationByReference">
+							<d2lm:predefinedLocationReference targetClass="PredefinedLocation" id="414141" version="1.1"/>
+						</d2lm:pertinentLocation>
+						<d2lm:travelTime>
+							<d2lm:duration>101</d2lm:duration>
+						</d2lm:travelTime>
+					</d2lm:basicData>
+				</d2lm:elaboratedData>
+				<!-- x 8 – Travel time predictions are specified for the next 2hrs at 
+					15min intervals -->
+				<!-- x N – The sequence of <d2lm:elaboratedData> items, above, are for 
+					a single location (Network Link). The message can contain the same sequence 
+					of data items for multiple locations -->
+			</d2lm:payloadPublication>
+		</d2lm:d2LogicalModel>
+	</soapenv:Body>
+</soapenv:Envelope>

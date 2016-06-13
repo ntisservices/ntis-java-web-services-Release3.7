@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soapenv:Header />
+	<soapenv:Body>
+<d2lm:d2LogicalModel xmlns:d2lm="http://datex2.eu/schema/2/2_0" modelBaseVersion="2"
+  extensionName="NTIS Published Services" extensionVersion="2.0">
+  <d2lm:exchange>
+    <d2lm:supplierIdentification>
+      <d2lm:country>gb</d2lm:country>
+      <d2lm:nationalIdentifier>NTIS</d2lm:nationalIdentifier>
+    </d2lm:supplierIdentification>
+  </d2lm:exchange>
+  <d2lm:payloadPublication xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:type="d2lm:SituationPublication" lang="en">
+    <d2lm:feedType>Event Data</d2lm:feedType>
+    <d2lm:publicationTime>2014-08-04T14:14:14.014+01:00</d2lm:publicationTime>
+    <d2lm:publicationCreator>
+      <d2lm:country>gb</d2lm:country>
+      <d2lm:nationalIdentifier>NTIS</d2lm:nationalIdentifier>
+    </d2lm:publicationCreator>
+    <d2lm:situation version="" id="1414141414">
+      <d2lm:relatedSituation version="" targetClass="Situation" id="141414"/>
+      <!-- x N – 0, 1 or multiple associations can exist -->
+      <d2lm:headerInformation>
+        <d2lm:areaOfInterest>national</d2lm:areaOfInterest>
+        <d2lm:confidentiality>restrictedToAuthoritiesTrafficOperatorsAndPublishers</d2lm:confidentiality>
+        <d2lm:informationStatus>real</d2lm:informationStatus>
+      </d2lm:headerInformation>
+      <d2lm:situationRecord xsi:type="d2lm:MaintenanceWorks" version="" id="1414141414">
+        <d2lm:situationRecordCreationReference>RW-14-08-04-141414</d2lm:situationRecordCreationReference>
+        <d2lm:situationRecordCreationTime>2014-08-04T14:14:14.014+01:00</d2lm:situationRecordCreationTime>
+        <d2lm:situationRecordVersionTime>2014-08-04T14:14:14.014+01:00</d2lm:situationRecordVersionTime>
+        <d2lm:probabilityOfOccurrence>certain</d2lm:probabilityOfOccurrence>
+        <d2lm:severity>low</d2lm:severity>
+        <d2lm:source>
+          <d2lm:sourceIdentification>RCC xyz</d2lm:sourceIdentification>
+          <d2lm:sourceExtension>
+            <d2lm:sourceSituation>  <!-- NTIS extension -->
+              <d2lm:sourceSituationId>RCC xyz 1414</d2lm:sourceSituationId>
+              <d2lm:sourceSituationCreationTime>2014-08-04T14:14:14.014+01:00</d2lm:sourceSituationCreationTime>
+            </d2lm:sourceSituation>
+          </d2lm:sourceExtension>
+        </d2lm:source>
+        <d2lm:validity>
+          <d2lm:validityStatus>suspended</d2lm:validityStatus>
+          <d2lm:validityTimeSpecification>
+            <d2lm:overallStartTime>2014-08-04T14:14:14.014+01:00</d2lm:overallStartTime>
+            <d2lm:overallEndTime>2014-08-14T14:14:14.014+01:00</d2lm:overallEndTime>
+            <d2lm:validPeriod>
+              <d2lm:startOfPeriod>2014-08-05T14:14:14.014+01:00</d2lm:startOfPeriod>
+              <d2lm:endOfPeriod>2014-08-06T14:14:14.014+01:00</d2lm:endOfPeriod>
+            </d2lm:validPeriod>
+            <d2lm:validPeriod>
+              <d2lm:startOfPeriod>2014-08-12T14:14:14.014+01:00</d2lm:startOfPeriod>
+              <d2lm:endOfPeriod>2014-08-13T14:14:14.014+01:00</d2lm:endOfPeriod>
+            </d2lm:validPeriod>
+            <!-- x N – 0, 1 or multiple valid periods can be specified -->
+          </d2lm:validityTimeSpecification>
+        </d2lm:validity>
+        <d2lm:impact>
+          <d2lm:capacityRemaining>25</d2lm:capacityRemaining>
+          <d2lm:numberOfLanesRestricted>0</d2lm:numberOfLanesRestricted>
+          <d2lm:numberOfOperationalLanes>1</d2lm:numberOfOperationalLanes>
+          <d2lm:originalNumberOfLanes>4</d2lm:originalNumberOfLanes>
+          <d2lm:trafficConstrictionType>lanesBlocked</d2lm:trafficConstrictionType>
+          <d2lm:impactExtension>
+            <d2lm:impactDetails>  <!-- NTIS extension -->
+              <d2lm:changeInCapacity>25</d2lm:changeInCapacity>
+              <d2lm:increaseInDemand>0</d2lm:increaseInDemand>
+              <d2lm:individualLanesStatus>
+                <d2lm:individualLane>
+                  <d2lm:laneIdentifier>lane1</d2lm:laneIdentifier>
+                  <d2lm:laneStatus>closed</d2lm:laneStatus>
+                </d2lm:individualLane>
+                <d2lm:individualLane>
+                  <d2lm:laneIdentifier>lane2</d2lm:laneIdentifier>
+                  <d2lm:laneStatus>closed</d2lm:laneStatus>
+                </d2lm:individualLane>
+                <d2lm:individualLane>
+                  <d2lm:laneIdentifier>lane3</d2lm:laneIdentifier>
+                  <d2lm:laneStatus>closed</d2lm:laneStatus>
+                </d2lm:individualLane>
+                <d2lm:individualLane>
+                  <d2lm:laneIdentifier>lane4</d2lm:laneIdentifier>
+                  <d2lm:laneStatus>normal</d2lm:laneStatus>
+                </d2lm:individualLane>
+                <!-- x N - all lanes are included, whether affected by the event or not -->
+              </d2lm:individualLanesStatus>
+            </d2lm:impactDetails>
+          </d2lm:impactExtension>
+        </d2lm:impact>
+        <d2lm:cause xsi:type="d2lm:NonManagedCause">
+          <d2lm:causeDescription>
+            <d2lm:values>
+              <d2lm:value>Scheduled road maintenance.</d2lm:value>
+              <!-- x N - the cause text can span multiple lines -->
+            </d2lm:values>
+          </d2lm:causeDescription>
+        </d2lm:cause>
+        <d2lm:generalPublicComment>
+          <d2lm:comment>
+            <d2lm:values>
+              <d2lm:value>TYPE : AWP</d2lm:value>
+              <d2lm:value>Schedule : from 14:14 on 4th August 2014 to 14:14 on 14th August 2014</d2lm:value>
+              <!-- x N - multiple AWP key/value pairs -->
+            </d2lm:values>
+          </d2lm:comment>
+        </d2lm:generalPublicComment>
+        <d2lm:generalPublicComment>
+          <d2lm:comment>
+            <d2lm:values>
+              <d2lm:value>TYPE : GDP</d2lm:value>
+              <d2lm:value>Schedule : from 14:14 on 4th August 2014 to 14:14 on 14th August 2014</d2lm:value>
+              <!-- x N - multiple GDP key/value pairs -->
+            </d2lm:values>
+          </d2lm:comment>
+        </d2lm:generalPublicComment>
+        <d2lm:generalPublicComment>
+          <d2lm:comment>
+            <d2lm:values>
+              <d2lm:value>Schedule may be extended - TBC.</d2lm:value>
+              <!-- x N - the comments may contain more than 1 line of text -->
+            </d2lm:values>
+          </d2lm:comment>
+          <d2lm:commentType>internalNote</d2lm:commentType>
+        </d2lm:generalPublicComment>
+        <d2lm:groupOfLocations xsi:type="d2lm:NonOrderedLocationGroupByList">
+          <d2lm:locationContainedInGroup xsi:type="d2lm:Point">
+            <d2lm:locationForDisplay>
+              <d2lm:latitude>53.439324</d2lm:latitude>
+              <d2lm:longitude>-2.287486</d2lm:longitude>
+            </d2lm:locationForDisplay>
+          </d2lm:locationContainedInGroup>
+          <d2lm:locationContainedInGroup xsi:type="d2lm:LocationByReference">
+            <d2lm:predefinedLocationReference targetClass="PredefinedLocation" version="1.1" id="14141414"/>
+          </d2lm:locationContainedInGroup>
+          <!-- x N - 1 or multiple network links can define the location of the Event -->
+        </d2lm:groupOfLocations>
+        <d2lm:management>
+          <d2lm:lifeCycleManagement>
+            <d2lm:cancel>false</d2lm:cancel>
+            <d2lm:end>false</d2lm:end>
+          </d2lm:lifeCycleManagement>
+          <d2lm:managementExtension>
+            <d2lm:situationManagement>  <!-- NTIS extension -->
+              <d2lm:speedLimit>14</d2lm:speedLimit>
+              <d2lm:confirmedBy>No one yet...</d2lm:confirmedBy>
+              <d2lm:rccInformation>
+                <d2lm:allocatedRcc>xyz</d2lm:allocatedRcc>
+                <d2lm:rccSituationId>xyz 1414</d2lm:rccSituationId>
+              </d2lm:rccInformation>
+              <d2lm:alternateRoutes>
+                <d2lm:alternateRoute>
+                  <d2lm:routeId>141414141414</d2lm:routeId>
+                </d2lm:alternateRoute>
+                <!-- x N – 0, 1 or multiple alternate routes can be specified -->
+              </d2lm:alternateRoutes>
+              <!-- containing element omitted if no alternate routes specified -->
+            </d2lm:situationManagement>
+          </d2lm:managementExtension>
+        </d2lm:management>
+        <d2lm:roadworksScale>medium</d2lm:roadworksScale>
+        <d2lm:urgentRoadworks>false</d2lm:urgentRoadworks>
+        <d2lm:mobility>
+          <d2lm:mobilityType>stationary</d2lm:mobilityType>
+        </d2lm:mobility>
+        <d2lm:subjects>
+          <d2lm:subjectTypeOfWorks>buriedCables</d2lm:subjectTypeOfWorks>
+        </d2lm:subjects>
+        <d2lm:roadMaintenanceType>maintenanceWork</d2lm:roadMaintenanceType>
+        <d2lm:maintenanceWorksExtension>
+          <d2lm:roadworksEventDetails>  <!-- NTIS extension -->
+            <d2lm:roadworksSchemeName>Cable works - id 141414</d2lm:roadworksSchemeName>
+            <d2lm:situationParent>
+              <d2lm:parentId>1414</d2lm:parentId>
+            </d2lm:situationParent>
+          </d2lm:roadworksEventDetails>
+        </d2lm:maintenanceWorksExtension>
+      </d2lm:situationRecord>
+    </d2lm:situation>
+  </d2lm:payloadPublication>
+</d2lm:d2LogicalModel>
+	</soapenv:Body>
+</soapenv:Envelope>

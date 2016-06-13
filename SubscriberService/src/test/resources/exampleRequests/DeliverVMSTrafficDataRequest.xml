@@ -1,0 +1,117 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soapenv:Header />
+	<soapenv:Body>
+		<d2lm:d2LogicalModel xmlns:d2lm="http://datex2.eu/schema/2/2_0"
+			modelBaseVersion="2" extensionName="NTIS Published Services"
+			extensionVersion="2.0">
+			<d2lm:exchange>
+				<d2lm:supplierIdentification>
+					<d2lm:country>gb</d2lm:country>
+					<d2lm:nationalIdentifier>NTIS</d2lm:nationalIdentifier>
+				</d2lm:supplierIdentification>
+			</d2lm:exchange>
+			<d2lm:payloadPublication xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:type="d2lm:VmsPublication" lang="en">
+				<d2lm:feedType>VMS and Matrix Signal Status Data</d2lm:feedType>
+				<d2lm:publicationTime>2013-07-17T14:18:35.182+01:00</d2lm:publicationTime>
+				<d2lm:publicationCreator>
+					<d2lm:country>gb</d2lm:country>
+					<d2lm:nationalIdentifier>NTIS</d2lm:nationalIdentifier>
+				</d2lm:publicationCreator>
+				<d2lm:headerInformation>
+					<d2lm:areaOfInterest>national</d2lm:areaOfInterest>
+					<d2lm:confidentiality>restrictedToAuthoritiesTrafficOperatorsAndPublishers</d2lm:confidentiality>
+					<d2lm:informationStatus>real</d2lm:informationStatus>
+				</d2lm:headerInformation>
+				<d2lm:vmsUnit>
+					<d2lm:vmsUnitTableReference targetClass="VmsUnitTable" version="56.0" id="NTIS_VMS_Units" />
+					<d2lm:vmsUnitReference targetClass="VmsUnitRecord" version="56.0" id="CFB613DE871F3254E0433CC411ACFD01" />
+					<d2lm:vms vmsIndex="0">
+						<d2lm:vms>
+							<d2lm:vmsWorking>false</d2lm:vmsWorking>
+							<d2lm:vmsMessage messageIndex="0">
+								<d2lm:vmsMessage>
+									<d2lm:messageSetBy>
+										<d2lm:values>
+											<d2lm:value lang="en">Someone</d2lm:value>
+										</d2lm:values>
+									</d2lm:messageSetBy>
+									<d2lm:reasonForSetting>
+										<d2lm:values>
+											<d2lm:value lang="en">VMS reason for setting</d2lm:value>
+										</d2lm:values>
+									</d2lm:reasonForSetting>
+									<d2lm:timeLastSet>2013-07-17T14:16:41.000+01:00</d2lm:timeLastSet>
+									<d2lm:textPage pageNumber="0">
+										<d2lm:vmsText>
+											<d2lm:vmsTextLine lineIndex="0">
+												<d2lm:vmsTextLine>
+													<d2lm:vmsTextLine>Line 0 Message</d2lm:vmsTextLine>
+												</d2lm:vmsTextLine>
+											</d2lm:vmsTextLine>
+											<d2lm:vmsTextLine lineIndex="1">
+												<d2lm:vmsTextLine>
+													<d2lm:vmsTextLine>Line 1 Message</d2lm:vmsTextLine>
+												</d2lm:vmsTextLine>
+											</d2lm:vmsTextLine>
+										</d2lm:vmsText>
+									</d2lm:textPage>
+									<d2lm:vmsPictogramDisplayArea pictogramDisplayAreaIndex="0">
+										<d2lm:vmsPictogramDisplayArea>
+											<d2lm:vmsPictogram pictogramSequencingIndex="0">
+												<d2lm:vmsPictogram>
+													<d2lm:pictogramDescription>animalsOnRoad</d2lm:pictogramDescription>
+													<d2lm:additionalPictogramDescription>
+														<d2lm:values>
+															<d2lm:value lang="en">SY01</d2lm:value>
+														</d2lm:values>
+													</d2lm:additionalPictogramDescription>
+													<d2lm:presenceOfRedTriangle>false</d2lm:presenceOfRedTriangle>
+												</d2lm:vmsPictogram>
+											</d2lm:vmsPictogram>
+										</d2lm:vmsPictogramDisplayArea>
+									</d2lm:vmsPictogramDisplayArea>
+								</d2lm:vmsMessage>
+							</d2lm:vmsMessage>
+						</d2lm:vms>
+					</d2lm:vms>
+				</d2lm:vmsUnit>
+				<d2lm:vmsUnit>
+					<d2lm:vmsUnitTableReference targetClass="VmsUnitTable" version="56.0" id="NTIS_Matrix_Units" />
+					<d2lm:vmsUnitReference targetClass="VmsUnitRecord" version="56.0" id="D2509502035B7952E0433CC411ACA994" />
+					<d2lm:vms vmsIndex="0">
+						<d2lm:vms>
+							<d2lm:vmsWorking>true</d2lm:vmsWorking>
+							<d2lm:vmsMessage messageIndex="0">
+								<d2lm:vmsMessage>
+									<d2lm:reasonForSetting>
+										<d2lm:values>
+											<d2lm:value lang="en">Matrix reason for setting</d2lm:value>
+										</d2lm:values>
+									</d2lm:reasonForSetting>
+									<d2lm:timeLastSet>2013-07-17T10:46:45.000+01:00</d2lm:timeLastSet>
+									<d2lm:vmsPictogramDisplayArea pictogramDisplayAreaIndex="0">
+										<d2lm:vmsPictogramDisplayArea>
+											<d2lm:vmsPictogram pictogramSequencingIndex="0">
+												<d2lm:vmsPictogram>
+													<d2lm:pictogramDescription>other</d2lm:pictogramDescription>
+													<d2lm:pictogramCode>X10</d2lm:pictogramCode>
+													<d2lm:presenceOfRedTriangle>false</d2lm:presenceOfRedTriangle>
+													<d2lm:vmsPictogramExtension>
+														<d2lm:vmsPictogramUK>
+															<d2lm:pictogramDescriptionUK>nationalSpeedLimit</d2lm:pictogramDescriptionUK>
+														</d2lm:vmsPictogramUK>
+													</d2lm:vmsPictogramExtension>
+												</d2lm:vmsPictogram>
+											</d2lm:vmsPictogram>
+										</d2lm:vmsPictogramDisplayArea>
+									</d2lm:vmsPictogramDisplayArea>
+								</d2lm:vmsMessage>
+							</d2lm:vmsMessage>
+						</d2lm:vms>
+					</d2lm:vms>
+				</d2lm:vmsUnit>
+			</d2lm:payloadPublication>
+		</d2lm:d2LogicalModel>
+	</soapenv:Body>
+</soapenv:Envelope>

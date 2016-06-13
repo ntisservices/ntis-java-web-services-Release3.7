@@ -1,0 +1,60 @@
+﻿# NTIS Subscriber Service – Java Web Service
+
+This repository comprises a single Java project that is utilised to receive data and information from the National Traffic Information Service (NTIS) system via a web service. 
+
+## Service Overview
+
+The NTIS system pushes unsolicited data to Subscriber systems.  The data received by a Subscriber is filtered and modified based on the options and preferences specified for that Subscriber.  To receive the published data, the Subscriber system is required to implement the server-side endpoint of the web service.
+
+The web service is defined by the standard DATEXII v2.0 Push WSDL.  The WSDL defines a single operation, putDatex2Data.  The request message of this operation is used by the NTIS system to push data to Subscribers.  The WSDL defines a response message for this operation, but it should be noted that the NTIS system does not expect or use the response message and will simply discard any response, if implemented.  The WSDL is included in the project resources.
+
+The content of the published data adheres to the DATEXII v2.0 Schema, with NTIS-specific Level B extensions applied to the schema.  The schema XSD, including the NTIS-specific extensions, is included in the project resources.
+
+The web service interface specification, defining the data published by the NTIS system, is located at: http://www.trafficengland.com/subscribers
+
+The data published on this service contains real-time traffic data.  To interpret the published data, the Subscriber needs to relate the real-time data to the reference data contained in the NTIS Model.  The Model contains road network and roadside equipment information.  The NTIS Model can be downloaded by Subscribers from a dedicated website: https://trafficengland.info/subscriberportal
+
+DATEXII is a European standard developed for the exchange of traffic data between systems.  The standard defines both the (XML) data content and exchange mechanisms.  Refer to the website for details: http://www.datex2.eu
+
+Note: the NTIS system publishes data to registered Subscribers only.  For further information regarding Subscriber registration and subscription options and preferences, refer to the contact details attached to the ntisservices repository.
+
+## Building and Installing the Web Service
+
+The build, install and test procedures are detailed in the README.md file, included in the project resources.
+
+## Implementing the Web Service
+
+This repository contains code for the Subscriber server-side endpoint for the web service.  The code includes a fully functioning web service front-end that implements the DATEXII Push WSDL, receives the messages pushed from the NTIS system and marshals the contained XML data into usable objects.  The code also includes some example classes that interrogate the received data.  From this basic framework, the Subscriber has the following options:
+* Modify the sample code to suit the needs of the Subscriber system.
+* Use the sample code as is, as a front end to receiving and marshalling the received data, then extend the code to suit the processing and storage needs of the Subscriber system.
+* Use only the web service descriptors, the supplied WSDL and schema, to implement a fully customised web service.
+
+## Package Structure
+
+The Java classes included in this project are organised into the following packages:
+* com.thales.ntis.gzipfilter : contains the gzip wrapper and filter classes, utilised to manage the gzip-compressed data within the incoming messages.
+* com.thales.ntis.subscriber.datex : contains the DATEXII XML binding classes.  Note: these classes are auto-generated from the DATEXII schema, included in the project resources, when the project is built using the gradle.build configuration file, also included in the project files.
+* com.thales.ntis.subscriber.endpoints : contains the single endpoint employed by the service, defined by the DATEX II push service WSDL, included in the project resources.
+* com.thales.ntis.subscriber.model : contains all the data modelling classes used in the example application.
+* com.thales.ntis.subscriber.services : contains the classes that validate and process the incoming message payload; including determining the type of data and the extraction of data items.  This package is the entry point for a developer to extend and modify the service.
+Note that this is example code only; for the sake of brevity and simplification these classes do not contain the level of error checking/handling and safeguarding normally expected in production code utilised to manage and process received publications.
+
+## Interpreting the Published Data Content
+
+Each published message contains a single type of published data (e.g. events, ANPR journey times), but can contain multiple, unrelated data items of that type.
+
+The data contained in the publication message is defined, as per the WSDL, as a single XML file with the top-level element of type <d2LogicalModel> (from the DATEXII schema).  As only one message/endpoint is used to publish the data, the content of the publication is utilised to determine what type of data is included in the file.  Each publication contains a single <feedType> element that defines the type of published data contained in the payload.  The <feedType> element contains a text value, set to one of the following values:
+* “ANPR Journey Time Data” : raw (unprocessed) real-time Automatic Number Plate Recognition (ANPR) journey time data, measured between ANPR camera sites.
+* “Event Data” : Events affecting the road network - roadworks, incidents, weather and so on (also known as situations, or situationRecords in DATEXII).
+* “MIDAS Loop Traffic Data” : raw (unprocessed) real-time traffic data measured by Motorway Incident Detection and Automatic Signalling (MIDAS) loop sensors in the road.
+* “NTIS Model Update Notification” : notification messages informing Subscribers that a new NTIS Model is available for download.
+* “Fused FVD and Sensor PTD” : real-time Processed Traffic Data (PTD), calculated from raw Floating Vehicle Data (FVD) and Sensor (loops, ANPR) traffic data.
+* “Fused Sensor-only PTD” : real-time Processed Traffic Data (PTD), calculated from raw Sensor (loops, ANPR) traffic data.
+* “TMU Loop Traffic Data” : raw (unprocessed) real-time traffic data measured by Traffic Monitoring Unit (TMU) loop sensors in the road.
+* “VMS and Matrix Signal Status Data” : real-time Variable Message Sign (VMS) and Matrix Signal display status information.
+
+There are 2 types of publication: a Data Update (containing on-occurrence changes to the data) and a Full Refresh (containing a full payload of all data items for that particular data type).  A Full Refresh publication is sent to a Subscriber system when: the NTIS service restarts, the subscription options change in a way that affects the data received by the Subscriber, the Subscriber system fails to receive a previous publication of that data type.  Full Refresh publications are only applicable to types of data that are stateful and infrequently updated: Events and VMS/Matrix data.
+
+To differentiate between the different publications, the Full Refresh publication, has the text “ – Full Refresh” appended to the normal text included in the <feedType> element (see above).
+
+During the full refresh delivery (which may contain a large amount of data), data updates intended for the Subscriber will continue to be sent using the normal operation. The Subscriber is expected to consolidate the data from the Full Refresh and updates which happen during full refresh.

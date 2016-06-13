@@ -1,0 +1,39 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soapenv:Header />
+	<soapenv:Body>
+		<d2lm:d2LogicalModel xmlns:d2lm="http://datex2.eu/schema/2/2_0"
+			modelBaseVersion="2" extensionName="NTIS Published Services"
+			extensionVersion="2.0">
+			<d2lm:exchange>
+				<d2lm:supplierIdentification>
+					<d2lm:country>gb</d2lm:country>
+					<d2lm:nationalIdentifier>NTIS</d2lm:nationalIdentifier>
+				</d2lm:supplierIdentification>
+			</d2lm:exchange>
+			<d2lm:payloadPublication xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:type="d2lm:GenericPublication" lang="en">
+				<d2lm:feedDescription>
+					<d2lm:values>
+						<d2lm:value lang="en">NTIS Network and Asset Reference Model: update notification</d2lm:value>
+						<d2lm:value lang="en">This publication contains details of the new version of the NTIS Model, available for download from the NTIS system</d2lm:value>
+					</d2lm:values>
+				</d2lm:feedDescription>
+				<d2lm:feedType>NTIS Model Update Notification</d2lm:feedType>
+				<d2lm:publicationTime>2014-08-04T14:14:14.014+01:00</d2lm:publicationTime>
+				<d2lm:publicationCreator>
+					<d2lm:country>gb</d2lm:country>
+					<d2lm:nationalIdentifier>NTIS</d2lm:nationalIdentifier>
+				</d2lm:publicationCreator>
+				<d2lm:genericPublicationName>NTIS Model Update Notification</d2lm:genericPublicationName>
+				<d2lm:genericPublicationExtension>
+					<d2lm:ntisModelVersionInformation>
+						<d2lm:modelVersion>1.1</d2lm:modelVersion>
+						<d2lm:modelPublicationTime>2013-07-10T15:43:14.672+01:00</d2lm:modelPublicationTime>
+						<d2lm:modelFilename>NTISModel-2013-07-10-v1.1.zip</d2lm:modelFilename>
+					</d2lm:ntisModelVersionInformation>
+				</d2lm:genericPublicationExtension>
+			</d2lm:payloadPublication>
+		</d2lm:d2LogicalModel>
+	</soapenv:Body>
+</soapenv:Envelope>
+            

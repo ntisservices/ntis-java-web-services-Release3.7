@@ -1,0 +1,6 @@
+/.gradle
+/build
+/.classpath
+/bin
+/SubscriberService.log*
+/.settings
