@@ -12,7 +12,7 @@ Prerequisites
 
 1. Software to install :
 
- JDK v1.6
+ JDK v1.7
 
  Gradle v1.11
 
