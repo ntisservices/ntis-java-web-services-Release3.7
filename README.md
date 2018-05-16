@@ -35,7 +35,7 @@ Prerequisites
 Importing Project in to Eclipse
 ---------------------------------
 
-1. Download the SubscriberService example application from https://github.com/ntisservices/ntis-java-web-services-Release3.2/archive/master.zip
+1. Download the SubscriberService example application from https://github.com/ntisservices/ntis-java-web-services-Release3.7/archive/master.zip
 
 2. Extract the zip file into the target location on your local file system.
 
