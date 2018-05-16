@@ -176,6 +176,18 @@
           </d2lm:roadworksEventDetails>
         </d2lm:maintenanceWorksExtension>
       </d2lm:situationRecord>
+      <d2lm:situationExtension>
+		<d2lm:associatedEvent>
+			<d2lm:relatedSituation id="180056" version="" targetClass="Situation"/>
+			<d2lm:relatedSituationReference>UF-18-03-07-300019</d2lm:relatedSituationReference>
+			<d2lm:associationType>causeAssociation</d2lm:associationType>
+		</d2lm:associatedEvent>
+		<d2lm:associatedEvent>
+			<d2lm:relatedSituation id="180085" version="" targetClass="Situation"/>
+			<d2lm:relatedSituationReference>UF-18-03-13-200020</d2lm:relatedSituationReference>
+			<d2lm:associationType>relatedAssociation</d2lm:associationType>
+		</d2lm:associatedEvent>
+	  </d2lm:situationExtension>
     </d2lm:situation>
   </d2lm:payloadPublication>
 </d2lm:d2LogicalModel>

@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.thales.ntis.subscriber.datex.AssociatedEvent;
 import com.thales.ntis.subscriber.datex.D2LogicalModel;
 import com.thales.ntis.subscriber.datex.MaintenanceWorks;
 import com.thales.ntis.subscriber.datex.RoadMaintenanceTypeEnum;
@@ -136,9 +137,8 @@ public class EventDataServiceImpl implements
 
                     for (Situation situation : situations) {
                         // Only have 1 situationRecord per situation (index=0)
-                        SituationRecord situationRecord = situation.getSituationRecord().get(0);
-                        EVENT_CACHE.put(situationRecord.getId(), situationRecord);
-                        processEventData(situationRecord);
+                    	processEventData(situation);
+                        
                     }
                 }
             } catch (Exception e) {
@@ -147,7 +147,19 @@ public class EventDataServiceImpl implements
         }
     }
 
-    /**
+    private void processEventData(Situation situation) {
+    	SituationRecord situationRecord = situation.getSituationRecord().get(0);
+        EVENT_CACHE.put(situationRecord.getId(), situationRecord);
+        processEventData(situationRecord);
+        AssociatedEvent associatedEvent = situation.getSituationExtension().getAssociatedEvent().get(0);
+        if (null != associatedEvent) {
+        	LOG.info("Associated event ID: {}", associatedEvent.getRelatedSituation().getId());
+        	LOG.info("Associated event reference: {}", associatedEvent.getRelatedSituationReference());
+        	LOG.info("Association type: {}", associatedEvent.getAssociationType());
+        }
+	}
+
+	/**
      * Different types of event/situation record contain some common information
      * and some type-specific data items and should be handled accordingly
      * 

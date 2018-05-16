@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:D2LogicalModel="http://datex2.eu/schema/2/2_0" version="2.0" targetNamespace="http://datex2.eu/schema/2/2_0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  <xs:complexType name="_AssociatedEvent">
+  	<xs:sequence>
+  		<xs:element name="relatedSituation" type="D2LogicalModel:_SituationVersionedReference" minOccurs="0" maxOccurs="1"/>
+  		<xs:element name="relatedSituationReference" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1"/>
+  		<xs:element name="associationType" type="D2LogicalModel:AssociationTypeEnum" minOccurs="0" maxOccurs="1"/>
+  		<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+  	</xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_SituationExtensionType">
+  	<xs:sequence>
+  		<xs:element name="associatedEvent" type="D2LogicalModel:_AssociatedEvent" minOccurs="0" maxOccurs="unbounded"/>
+  		<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+  	</xs:sequence>
+  </xs:complexType>
   <xs:complexType name="_AreaExtensionType">
     <xs:sequence>
       <xs:element name="areaExtension" type="D2LogicalModel:AreaExtension" minOccurs="0" />
@@ -17,6 +32,19 @@
       <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="_LinearDescriptionExtensionType">
+    <xs:sequence>
+      <xs:element name="areaDescriptor" type="D2LogicalModel:TpegAreaDescriptor" minOccurs="0" maxOccurs="3" />
+      <xs:element name="linearLocation" type="D2LogicalModel:TpegLinearLocation" minOccurs="0" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_OtherExtensionType">
+    <xs:sequence>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  
   <xs:complexType name="_GenericPublicationExtensionType">
     <xs:sequence>
       <xs:element name="ntisModelVersionInformation" type="D2LogicalModel:NtisModelVersionInformation" minOccurs="0" />
@@ -27,6 +55,16 @@
     <xs:sequence>
       <xs:element name="impactDetails" type="D2LogicalModel:ImpactDetails" minOccurs="0" />
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_LocationByReferenceExtensionType">
+    <xs:sequence>
+      <xs:element name="distanceAlongLinearElement" type="D2LogicalModel:DistanceAlongLinearElement" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_DistanceFromLinearElementStartExtensionType">
+    <xs:sequence>
+      <xs:element name="String" type="D2LogicalModel:String" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="_IntermediatePointOnLinearElement">
@@ -311,6 +349,23 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:simpleType name="AssociationTypeEnum">
+  	<xs:annotation>
+  		<xs:documentation>The relationship of an event associated with this event.</xs:documentation>
+  	</xs:annotation>
+  	<xs:restriction base="xs:string">
+  		<xs:enumeration value="causeAssociation">
+  			<xs:annotation>
+  				<xs:documentation>The main event has a 'causes association' with this associated event.</xs:documentation>
+  			</xs:annotation>
+  		</xs:enumeration>
+  		<xs:enumeration value="relatedAssociation">
+  			<xs:annotation>
+  				<xs:documentation>The main event has a 'related association' with this associated event.</xs:documentation>
+  			</xs:annotation>
+  		</xs:enumeration>
+  	</xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="AbnormalTrafficTypeEnum">
     <xs:annotation>
       <xs:documentation>Collection of descriptive terms for abnormal traffic conditions specifically relating to the nature of the traffic movement.</xs:documentation>
@@ -382,7 +437,7 @@
           </xs:element>
           <xs:element name="groupOfVehiclesInvolved" type="D2LogicalModel:GroupOfVehiclesInvolved" minOccurs="0" maxOccurs="unbounded" />
           <xs:element name="groupOfPeopleInvolved" type="D2LogicalModel:GroupOfPeopleInvolved" minOccurs="0" maxOccurs="unbounded" />
-          <xs:element name="accidentExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+          <xs:element name="accidentExtension" type="D2LogicalModel:_OtherExtensionType" minOccurs="0" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -1028,7 +1083,7 @@
               <xs:documentation>Indicates the nature of animals present on or near the roadway.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="animalPresenceObstructionExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+          <xs:element name="animalPresenceObstructionExtension" type="D2LogicalModel:_OtherExtensionType" minOccurs="0" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -1152,7 +1207,7 @@
               <xs:documentation>Type of authority initiated operation or activity that could disrupt traffic. </xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="authorityOperationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+          <xs:element name="authorityOperationExtension" type="D2LogicalModel:_OtherExtensionType" minOccurs="0" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -3013,7 +3068,7 @@
               <xs:documentation>A measure of distance along a linear element.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="distanceFromLinearElementStartExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+          <xs:element name="distanceFromLinearElementStartExtension" type="D2LogicalModel:_DistanceFromLinearElementStartExtensionType" minOccurs="0" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -3445,7 +3500,7 @@
               <xs:documentation>Characterization of an obstruction on the road resulting from an environmental cause.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="environmentalObstructionExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+          <xs:element name="environmentalObstructionExtension" type="D2LogicalModel:_OtherExtensionType" minOccurs="0" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -4301,7 +4356,7 @@
             </xs:annotation>
           </xs:element>
           <xs:element name="groupOfPeopleInvolved" type="D2LogicalModel:GroupOfPeopleInvolved" minOccurs="0" maxOccurs="unbounded" />
-          <xs:element name="generalObstructionExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+          <xs:element name="generalObstructionExtension" type="D2LogicalModel:_OtherExtensionType" minOccurs="0" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -5451,7 +5506,7 @@
           <xs:element name="tpegLinearLocation" type="D2LogicalModel:TpegLinearLocation" minOccurs="0" />
           <xs:element name="alertCLinear" type="D2LogicalModel:AlertCLinear" minOccurs="0" />
           <xs:element name="linearWithinLinearElement" type="D2LogicalModel:LinearWithinLinearElement" minOccurs="0" />
-          <xs:element name="linearExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+          <xs:element name="linearExtension" type="D2LogicalModel:_LinearDescriptionExtensionType" minOccurs="0" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -5833,7 +5888,7 @@
               <xs:documentation>A reference to a versioned predefined location.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="locationByReferenceExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+          <xs:element name="locationByReferenceExtension" type="D2LogicalModel:_LocationByReferenceExtensionType" minOccurs="0"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -7148,7 +7203,7 @@
         </xs:annotation>
       </xs:element>
       <xs:element name="publicationCreator" type="D2LogicalModel:InternationalIdentifier" />
-      <xs:element name="payloadPublicationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+      <xs:element name="payloadPublicationExtension" type="D2LogicalModel:_OtherExtensionType" minOccurs="0" />
     </xs:sequence>
     <xs:attribute name="lang" type="D2LogicalModel:Language" use="required">
       <xs:annotation>
@@ -7751,7 +7806,7 @@
       </xs:enumeration>
       <xs:enumeration value="particulates10">
         <xs:annotation>
-          <xs:documentation>Particulate matter which passes through a size-selective inlet with a 50% cut-off efficiency at an aerodynamic diameter of 10 µm (micrometres).</xs:documentation>
+          <xs:documentation>Particulate matter which passes through a size-selective inlet with a 50% cut-off efficiency at an aerodynamic diameter of 10 micrometres.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="polycyclicAromaticHydrocarbons">
@@ -7839,7 +7894,7 @@
           <xs:element name="temperature" type="D2LogicalModel:Temperature" minOccurs="0" />
           <xs:element name="wind" type="D2LogicalModel:Wind" minOccurs="0" />
           <xs:element name="humidity" type="D2LogicalModel:Humidity" minOccurs="0" />
-          <xs:element name="poorEnvironmentConditionsExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+          <xs:element name="poorEnvironmentConditionsExtension" type="D2LogicalModel:_OtherExtensionType" minOccurs="0" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -9138,7 +9193,7 @@
               <xs:documentation>The minimum number of persons required in a vehicle in order for it to be allowed to transit the specified road section.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="roadOrCarriagewayOrLaneManagementExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+          <xs:element name="roadOrCarriagewayOrLaneManagementExtension" type="D2LogicalModel:_OtherExtensionType" minOccurs="0" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -9747,7 +9802,7 @@
       </xs:element>
       <xs:element name="headerInformation" type="D2LogicalModel:HeaderInformation" />
       <xs:element name="situationRecord" type="D2LogicalModel:SituationRecord" maxOccurs="unbounded" />
-      <xs:element name="situationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+      <xs:element name="situationExtension" type="D2LogicalModel:_SituationExtensionType" minOccurs="0"/>
     </xs:sequence>
     <xs:attribute name="id" type="xs:string" use="required" />
     <xs:attribute name="version" type="xs:string" use="required" />
@@ -13447,7 +13502,7 @@
         <xs:annotation>
           <xs:documentation>4 Wickets.</xs:documentation>
         </xs:annotation>
-      </xs:enumeration>
+      </xs:enumeration>      
       <xs:enumeration value="nationalSpeedLimit">
         <xs:annotation>
           <xs:documentation>Mandatory maximum speed, set to the national speed limit.  No actual speed value is displayed, as the speed limit is specific to the type of road and type of vehicle being driven.</xs:documentation>
@@ -13463,7 +13518,7 @@
           <xs:documentation>Red flashers are switched on.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-    </xs:restriction>
+    </xs:restriction>      
   </xs:simpleType>
   <xs:simpleType name="VmsDatexSupplementalPictogramEnum">
     <xs:annotation>
@@ -14579,7 +14634,7 @@
             </xs:annotation>
           </xs:element>
           <xs:element name="roadSurfaceConditionMeasurements" type="D2LogicalModel:RoadSurfaceConditionMeasurements" minOccurs="0" />
-          <xs:element name="weatherRelatedRoadConditionsExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+          <xs:element name="weatherRelatedRoadConditionsExtension" type="D2LogicalModel:_OtherExtensionType" minOccurs="0" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

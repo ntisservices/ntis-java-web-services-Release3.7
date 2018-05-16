@@ -41,7 +41,9 @@
 											<d2lm:value lang="en">VMS reason for setting</d2lm:value>
 										</d2lm:values>
 									</d2lm:reasonForSetting>
+									<d2lm:vmsMessageInformationType>trafficManagement</d2lm:vmsMessageInformationType>
 									<d2lm:timeLastSet>2013-07-17T14:16:41.000+01:00</d2lm:timeLastSet>
+									<d2lm:situationToWhichMessageIsRelated xsi:type="d2lm:_SituationVersionedReference" id="id of related event" version="" targetClass=""/>
 									<d2lm:textPage pageNumber="0">
 										<d2lm:vmsText>
 											<d2lm:vmsTextLine lineIndex="0">

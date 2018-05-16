@@ -24,12 +24,12 @@ import com.thales.ntis.subscriber.datex.VmsUnitVmsIndexVms;
 public class VMSTrafficDataServiceImpl implements TrafficDataService {
 
     private static final Logger LOG = LoggerFactory.getLogger(VMSTrafficDataServiceImpl.class);
-    private static final String PUBLICATION_TYPE = "VMS/Matrix Signal Status Publication";
+    private static final String PUBLICATION_TYPE = "VMS/Matrix Signal Status Publication {}";
 
     @Override
     public void handle(D2LogicalModel d2LogicalModel) {
 
-        LOG.info(PUBLICATION_TYPE + ": received...");
+        LOG.info(PUBLICATION_TYPE, ": received...");
 
         VmsPublication vmsPublication = null;
 
@@ -38,14 +38,14 @@ public class VMSTrafficDataServiceImpl implements TrafficDataService {
             if (vmsPublication != null) {
                 List<VmsUnit> vmsUnits = vmsPublication.getVmsUnit();
 
-                LOG.info("Number of VMS/Matrix Units in payload: " + vmsUnits.size());
+                LOG.info("Number of VMS/Matrix Units in payload: {}", vmsUnits.size());
 
                 // The publication can contain status info for more than one
                 // unit
                 for (VmsUnit vmsUnit : vmsUnits) {
                     extractStatusInformationFromUnitData(vmsUnit);
                 }
-                LOG.info(PUBLICATION_TYPE + ": processed successfully.");
+                LOG.info(PUBLICATION_TYPE, ": processed successfully.");
             }
         } catch (Exception e) {
             LOG.error(e.getMessage());
@@ -61,7 +61,7 @@ public class VMSTrafficDataServiceImpl implements TrafficDataService {
         String vmsUnitType = vmsUnit.getVmsUnitTableReference().getId();
 
         if ("NTIS_VMS_Units".equals(vmsUnitType)) {
-            LOG.info("VMS Unit ID: " + vmsUnit.getVmsUnitReference().getId());
+            LOG.info("VMS Unit ID: {}", vmsUnit.getVmsUnitReference().getId());
 
             // There is only ever 1 VMS/Matrix unit per vmsUnit element - at
             // index 0
@@ -69,23 +69,22 @@ public class VMSTrafficDataServiceImpl implements TrafficDataService {
 
             // There is only ever 1 message per unit
             VmsMessage message = unit.getVms().getVmsMessage().get(0).getVmsMessage();
-
-            LOG.info("Set by: " + message.getMessageSetBy().getValues().getValue().get(0).getValue());
-            LOG.info("Last set at: " + message.getTimeLastSet());
-
+            LOG.info("Message type: {}", message.getVmsMessageInformationType());
+            LOG.info("Set by: {}", message.getMessageSetBy().getValues().getValue().get(0).getValue());
+            LOG.info("Last set at: {}", message.getTimeLastSet());
+            LOG.info("Related event: {}", message.getSituationToWhichMessageIsRelated().getId());
             // There is only ever 1 text page specified, with multiple text lines
             TextPage textPage = message.getTextPage().get(0);
             List<VmsTextLineIndexVmsTextLine> textLines = textPage.getVmsText().getVmsTextLine();
-            for (VmsTextLineIndexVmsTextLine textLine : textLines)
-                LOG.info("Text Line #" + (textLine.getLineIndex() + 1) + ": " + textLine.getVmsTextLine().getVmsTextLine());
-
+            for (VmsTextLineIndexVmsTextLine textLine : textLines) {
+                LOG.info("Text Line #{}", (textLine.getLineIndex() + 1) + ": " + textLine.getVmsTextLine().getVmsTextLine());
+            }
             // There is only ever 1 pictogram display area, with 1 pictogram
-            LOG.info("Pictogram Displayed: "
-                    + message.getVmsPictogramDisplayArea().get(0).getVmsPictogramDisplayArea().getVmsPictogram().get(0)
-                            .getVmsPictogram().getPictogramDescription().get(0).toString());
-
+            LOG.info("Pictogram Displayed: {}",
+                    message.getVmsPictogramDisplayArea().get(0).getVmsPictogramDisplayArea().getVmsPictogram().get(0)
+                            .getVmsPictogram().getPictogramDescription().get(0));
         } else if ("NTIS_Matrix_Units".equals(vmsUnitType)) {
-            LOG.info("Matrix Unit ID: " + vmsUnit.getVmsUnitReference().getId());
+            LOG.info("Matrix Unit ID: {}", vmsUnit.getVmsUnitReference().getId());
 
             // There is only ever 1 VMS/Matrix unit per vmsUnit element - at
             // index 0
@@ -94,7 +93,7 @@ public class VMSTrafficDataServiceImpl implements TrafficDataService {
             // There is only ever 1 message per unit
             VmsMessage message = unit.getVms().getVmsMessage().get(0).getVmsMessage();
 
-            LOG.info("Last set at: " + message.getTimeLastSet());
+            LOG.info("Last set at: {}", message.getTimeLastSet());
 
             // There is only ever 1 pictogram display area, with 1 pictogram
             VmsPictogram pictogram = message.getVmsPictogramDisplayArea().get(0).getVmsPictogramDisplayArea().getVmsPictogram()
@@ -109,10 +108,9 @@ public class VMSTrafficDataServiceImpl implements TrafficDataService {
             } else {
                 pictogramDesc = pictogramType.toString();
             }
-            LOG.info("Pictogram Displayed: " + pictogramDesc);
-
+            LOG.info("Pictogram Displayed: {}", pictogramDesc);
         } else {
-            LOG.error("Invalid unit type received in publication: " + vmsUnitType);
+            LOG.error("Invalid unit type received in publication: {}", vmsUnitType);
         }
     }
 }
